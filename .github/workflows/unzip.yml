@@ -21,7 +21,7 @@ jobs:
           shopt -s dotglob
           mv extracted/* .
           rm -rf extracted
-          rm GetMoreRam-git.zip
+          rm GetMoreRam- git.zip
 
       - name: Commit extracted files
         run: |
