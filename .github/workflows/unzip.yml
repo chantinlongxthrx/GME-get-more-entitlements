@@ -14,14 +14,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Unzip
-        run: unzip "GetMoreRam-git.zip" -d extracted
+        run: unzip "GetMoreRam-.zip" -d extracted
 
       - name: Move files
         run: |
           shopt -s dotglob
           mv extracted/* .
           rm -rf extracted
-          rm GetMoreRam-git.zip
+          rm GetMoreRam-.zip
 
       - name: Commit extracted files
         run: |
