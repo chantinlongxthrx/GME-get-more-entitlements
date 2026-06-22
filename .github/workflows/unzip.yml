@@ -11,7 +11,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
       - name: Zip extract
         - uses: hoatruongdev09/extract-zip-github-action@v1.2
