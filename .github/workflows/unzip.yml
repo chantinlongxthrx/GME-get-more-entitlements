@@ -1,15 +1,32 @@
-name: Unzip Project
+me: Unzip Project
 
-on:
-  workflow_dispatch:
+on: 
+workflow_dispatch:
 
-permissions:
-  contents: write
+permissions: 
+contents: write
 
-jobs:
-  unzip:
-    runs-on: ubuntu-latest
+jobs: 
+unzip: 
+runs-on: ubuntu-latest
 
-    steps:
-      - name: Zip extract
-        - uses: hoatruongdev09/extract-zip-github-action@v1.2
+steps:
+  - uses: actions/checkout@v4
+
+  - name: Unzip
+    run: unzip "GetMoreRam-git.zip" -d extracted
+
+  - name: Move files
+    run: |
+      shopt -s dotglob
+      mv extracted/GetMoreRam-/* .
+      rm -rf extracted
+      rm -f GetMoreRam-.zip
+
+  - name: Commit extracted files
+    run: |
+      git config user.name "chantinlongxthrx"
+      git config user.email "chantinlongxthrx@gmail.com"
+      git add .
+      git commit -m "Extract project" || echo "Nothing to commit"
+      git push
